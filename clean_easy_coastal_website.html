@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Easy Coastal</title>
+<style>
+:root{
+--emerald:#50C878;
+--forest:#014421;
+--light:#ecfdf5;
+--accent:#d1fae5;
+}
+body{font-family:Arial, sans-serif;margin:0;background:var(--light);color:#1f2937}
+header{background:var(--forest);color:white;padding:20px;text-align:center}
+nav{display:flex;justify-content:center;gap:25px;margin-top:10px}
+nav a{color:white;text-decoration:none;font-weight:bold}
+nav a:hover{color:var(--emerald)}
+.hero{padding:80px 20px;text-align:center;background:linear-gradient(135deg,var(--accent),var(--light))}
+.hero h2{color:var(--forest);font-size:36px}
+section{padding:60px 20px;max-width:1000px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.card{background:white;border-radius:12px;padding:25px;border-top:5px solid var(--emerald);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+.card h3{color:var(--forest)}
+button{background:var(--emerald);color:white;border:none;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold}
+button:hover{background:var(--forest)}
+form input, form select, form textarea{width:100%;padding:10px;margin:8px 0;border-radius:6px;border:1px solid #cbd5e1}
+footer{background:var(--forest);color:white;text-align:center;padding:25px;margin-top:40px}
+iframe{border-radius:10px}
+</style>
+</head>
+
+<body>
+
+<header>
+<div style="display:flex;align-items:center;justify-content:center;gap:12px;">
+<svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- house -->
+  <polygon points="20,50 50,25 80,50 80,80 20,80" fill="#50C878" stroke="#014421" stroke-width="4"/>
+  <!-- door -->
+  <rect x="45" y="60" width="10" height="20" fill="#014421"/>
+  <!-- wave -->
+  <path d="M10 70 Q30 60 50 70 T90 70" stroke="#014421" stroke-width="4" fill="none"/>
+  <!-- sparkle -->
+  <polygon points="75,20 78,28 86,31 78,34 75,42 72,34 64,31 72,28" fill="#50C878" stroke="#014421" stroke-width="2"/>
+</svg>
+<h1 style="margin:0;">Clean Easy Coastal</h1>
+</div>
+<p>Cleaning Made Simple on the Coast</p>
+<nav>
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#booking">Book</a>
+<a href="#quote">Free Quote</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<div class="hero">
+<h2>Cleaning Made Simple on the Coast</h2>
+<p>Keeping your home fresh, clean, and clutter‑free.</p>
+</div>
+
+<section id="services">
+<h2>Our Services</h2>
+<div class="cards">
+<div class="card">
+<h3>Basic Cleaning</h3>
+<ul>
+<li>Laundry</li>
+<li>Bedding</li>
+<li>Bathrooms</li>
+<li>Kitchen</li>
+<li>Floors</li>
+</ul>
+</div>
+<div class="card">
+<h3>Deep Cleaning</h3>
+<ul>
+<li>All Basic Services</li>
+<li>Window Seals</li>
+<li>Interior Windows</li>
+<li>Dusting</li>
+<li>Vents</li>
+<li>Grout</li>
+<li>Baseboards</li>
+</ul>
+</div>
+<div class="card">
+<h3>Full Package</h3>
+<ul>
+<li>Everything in Deep Clean</li>
+<li>Organization of 1 space</li>
+<li>Garages</li>
+<li>Pantries</li>
+<li>Closets</li>
+<li>Cabinets</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="pricing">
+<h2>Pricing</h2>
+<div class="cards">
+<div class="card">
+<h3>Basic</h3>
+<p>$85 – $150</p>
+</div>
+<div class="card">
+<h3>Deep Clean</h3>
+<p>$150 – $300</p>
+</div>
+<div class="card">
+<h3>Full Package</h3>
+<p>$250 – $400</p>
+</div>
+</div>
+<p><strong>Additional Organized Spaces:</strong> $75 each</p>
+<p>Prices vary depending on home size, room size, supplies needed, and cleaning level.</p>
+<h3>Regular Customer Discount</h3>
+<p>Customers who book cleaning twice per month or more receive a <strong>25% discount.</strong></p>
+</section>
+
+<section id="booking">
+<h2>Book an Appointment</h2>
+<div id="calendar"></div>
+<p>Select a service, date, and time slot below:</p>
+<form id="bookingForm">
+<select id="package" name="package">
+<option>Basic Cleaning</option>
+<option>Deep Cleaning</option>
+<option>Full Package</option>
+</select>
+<input type="date" id="date" name="date" required>
+<select id="time" name="time" required>
+<option value="09:00">9:00 AM</option>
+<option value="11:00">11:00 AM</option>
+<option value="13:00">1:00 PM</option>
+<option value="15:00">3:00 PM</option>
+<option value="17:00">5:00 PM</option>
+</select>
+<input type="text" id="name" name="name" placeholder="Full Name" required>
+<input type="email" id="email" name="email" placeholder="Email" required>
+<input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+<textarea id="notes" name="notes" placeholder="Notes about your home"></textarea>
+<button type="submit">Book Now</button>
+</form>
+<script>
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+ e.preventDefault();
+ const form = e.target;
+ const subject = encodeURIComponent('New Cleaning Appointment');
+ const body = encodeURIComponent(`Service: ${form.package.value}\nDate: ${form.date.value}\nTime: ${form.time.value}\nName: ${form.name.value}\nEmail: ${form.email.value}\nPhone: ${form.phone.value}\nNotes: ${form.notes.value}`);
+ window.location.href = `mailto:cleaneasycoastal@gmail.com?subject=${subject}&body=${body}`;
+ alert('Your appointment request has been prepared in your email client. Please send to confirm.');
+});
+</script>
+</section>
+
+<section id="quote">
+<h2>Get a Free Quote</h2>
+<p>Upload photos so we can provide an accurate estimate.</p>
+<form action="https://formsubmit.co/cleaneasycoastal@gmail.com" method="POST" enctype="multipart/form-data">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="phone" placeholder="Phone Number">
+<select name="service">
+<option>Basic Cleaning</option>
+<option>Deep Cleaning</option>
+<option>Full Package</option>
+</select>
+<input type="text" name="home_size" placeholder="Home size or number of rooms">
+<input type="file" name="photos" multiple>
+<textarea name="message" placeholder="Additional notes"></textarea>
+<button type="submit">Submit Quote Request</button>
+</form>
+</section>
+
+<section id="service-area">
+<h2>Service Area</h2>
+<p>We proudly provide cleaning services across the Florida Gulf Coast. Our primary service areas include Pensacola, Gulf Breeze, and Navarre.</p>
+<ul>
+<li>Pensacola</li>
+<li>Gulf Breeze</li>
+<li>Navarre</li>
+</ul>
+<p>See the map below to check our general service region.</p>
+<iframe src="https://www.google.com/maps?q=Pensacola%20Florida&output=embed" width="100%" height="350"></iframe>
+</section>
+
+<section id="dinner">
+<h2>Dinner Requests Available</h2>
+<p>Along with cleaning services, we also offer optional homemade dinner preparation. Customers can request fresh Italian dishes prepared the same day as their cleaning appointment.</p>
+<div class="cards">
+<div class="card">
+<h3>Italian Dinner Options</h3>
+<ul>
+<li>Lasagna</li>
+<li>Chicken Alfredo</li>
+<li>Spaghetti with Meat Sauce</li>
+<li>Baked Ziti</li>
+<li>Chicken Parmesan</li>
+<li>Garlic Bread & Side Salad</li>
+</ul>
+</div>
+</div>
+<form action="mailto:cleaneasycoastal@gmail.com" method="post" enctype="text/plain">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="tel" name="phone" placeholder="Phone Number">
+<select name="dish">
+<option>Lasagna</option>
+<option>Chicken Alfredo</option>
+<option>Spaghetti with Meat Sauce</option>
+<option>Baked Ziti</option>
+<option>Chicken Parmesan</option>
+</select>
+<textarea name="details" placeholder="Special requests or dietary notes"></textarea>
+<button type="submit">Submit Dinner Request</button>
+</form>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p><strong>Phone:</strong> 251-294-1487</p>
+<p><strong>Email:</strong> cleaneasycoastal@gmail.com</p>
+<p>Hours: Monday – Saturday | 8:00 AM – 6:00 PM</p>
+</section>
+
+<footer>
+<p>© 2026 Clean Easy Coastal</p>
+</footer>
+
+</body>
+</html>
